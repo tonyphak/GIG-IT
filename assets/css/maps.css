@@ -1,0 +1,68 @@
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:400i|Changa:500|Economica|Lobster');
+
+
+#map {
+    height: 100%;
+    width: 100%;
+    background-color: grey;
+    color: black
+}
+
+.windowVenue {
+    text-align: center;
+    color: #9200bf;
+    font-family: 'Changa', sans-serif;
+    font-size: 35px;
+    text-shadow: 1px 1px black;
+    border: 36px solid orange;
+    border-image:
+    url("https://mdn.mozillademos.org/files/4127/border.png")  /* source */
+    27 /                    /* slice */
+    0px 0px 18px 0px /    /* width */ 
+    18px 14px 9px 4px       /* outset */
+    round;                  /* repeat */
+}
+
+
+.contentWindow {
+    background-color:#000000;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0px;
+}
+
+.EventInfoWindow {
+    background-color:#9200bf;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+
+}
+
+.windowCity {
+    font-family: 'Economica', sans-serif;
+    color: #FBFDF8;
+    text-shadow: 1px 2px grey;
+    font-size: 25px;
+    margin: 10px;
+}
+
+.windowDate{
+    font-family: 'Economica', sans-serif;
+    color: #FBFDF8;
+    text-shadow: 1px 2px grey;
+    font-size: 25px;
+    margin: 10px;
+    
+}
+
+.windowLineup {
+    font-family: 'Economica', sans-serif;
+    color: #FBFDF8;
+    text-shadow: 1px 2px grey;
+    font-size: 25px;
+    margin: 10px;
+
+}

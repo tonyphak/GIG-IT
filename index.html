@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="assets/css/maps.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Gig It</title>
+
+
+</head>
+
+
+<body>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+
+    <nav class="navbar ">
+
+
+        <a class="navbar-brand" id="logo">Gig It!</a>
+
+        <form class="form-inline">
+
+            <input class="form-control mr-sm-4" type="search" placeholder="Search" id="search" aria-label="Search">
+            <input class="form-control mr-sm-4" type="search" placeholder="City" id="search2" aria-label="Search">
+            
+            <div class="row">
+
+                <button type="button" id="submit" class="btn btn-primary">Submit</button>
+
+            </div>
+
+        </form>
+
+        <!-- Button trigger modal -->
+        <button class="btn btn-outline-dark my-2 my-sm-0 styledBtn hide" type="button" data-toggle="modal" data-target="#eventModal"
+            id="artistBtn"><i class="fas fa-plus"></i> Add Event</button>
+        <button class="btn btn-outline-dark my-2 my-sm-0 styledBtn" type="button" data-toggle="modal" data-target="#signInModal"
+            id="signInBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+        <button class="btn btn-outline-dark my-2 my-sm-0 styledBtn hide" type="button" id="signOutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+
+        <!-- Sign In Modal -->
+        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signInTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="userEmail">Email address</label>
+                                <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submitUser">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                        <!-- <button class="btn btn-outline-dark my-2 my-sm-0 styledBtn" type="button" data-toggle="modal" data-target="#eventModal" id="artistBtn">Sign In</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Form Modal -->
+        <div class="modal fade formModal" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalTitle" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="eventModalTitle">Register Event</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form>
+                            <div class="form-group">
+                                <label for="eventInput">Event Name:</label>
+                                <input type="text" class="form-control" id="eventInput">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bandInput">Band Name:</label>
+                                <input type="text" class="form-control" id="bandInput">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="locationInput">Event Location:</label>
+                                <input type="text" class="form-control" id="locationInput">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dateInput">Date:</label>
+                                <input type="date" class="form-control" id="dateInput">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dateInput">Time:</label>
+                                <input type="time" class="form-control" id="timeInput">
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label>Upload Image</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-default btn-file">
+                                            Browse…
+                                            <input type="file" id="imgInp">
+                                        </span>
+                                    </span>
+
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                                <img id='img-upload' />
+                            </div> -->
+
+                            <label>Location Type:</label>
+                            <br>
+                            <button type="button" class="btn btn-outline-danger" id="vunueBtn" data-place="venue" value="venue">
+                                <i class="fas fa-music"></i> Venue</button>
+                            <button type="button" class="btn btn-outline-danger" id="barBtn" data-place="venue" value="bar">
+                                <i class="fas fa-beer"></i> Bar</button>
+                            <button type="button" class="btn btn-outline-danger" id="houseBtn" data-place="venue" value="house">
+                                <i class="fas fa-home"></i> House</button>
+                            <button type="button" class="btn btn-outline-danger" id="coffeeBtn" data-place="venue" value="coffee">
+                                <i class="fas fa-coffee"></i> Coffee Shop</button>
+                            <button type="button" class="btn btn-outline-danger" id="theatreBtn" data-place="venue" value="theatre">
+                                <i class="fas fa-theater-masks"></i> Theatre</button>
+                            <button type="button" class="btn btn-outline-danger" id="amptheatreBtn" data-place="venue" value="amptheatre">
+                                <i class="fas fa-microphone"></i> Amptheatre</button>
+                            <button type="button" class="btn btn-outline-danger" id="otherBtn" data-place="venue" value="other">
+                                <i class="fas fa-map-pin"></i> Other</button>
+
+                            <input type="submit" class="btn btn-primary" id="submitEvent">
+
+
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary" id="submitEvent">Submit</button> -->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- <button class="btn btn-primary my-2 my-sm-0 styledBtn" type="button" id="artistBtn">Artist Sign In</button> -->
+
+
+    </nav>
+
+    <div class="main">
+
+        <div class="leftContainer theme">
+
+            
+            <h1 class="main-labels">Events</h1>
+
+            <form name="dateForm">
+
+                <select name="time" id="timeFrame">
+
+                    <option value="today" id="today">Today</option>
+
+                    <option value="thisWeek" id="thisWeek">This Week</option>
+
+                    <option value="thisMonth" id="thisMonth">This Month</option>
+
+                    <option>All Upcoming Events</option>
+
+                </select>
+
+            </form>
+
+            <div id="artistName"></div>
+
+            <!-- <div id="artistPage"></div> -->
+
+            <div id="artistInfo"></div>
+
+
+
+            <ul>
+
+            </ul>
+
+
+        </div>
+
+
+        <div class="mapContainer">
+
+            <div id="map">
+
+            </div>
+
+        </div>
+
+        <div class="rightMain ">
+            <div class="rightContainer theme">
+
+                <h1 class="main-labels">Artists</h1>
+
+                <div id="artists">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="theme">
+
+        <div class="footerDiv">
+
+        </div>
+
+    </footer>
+
+
+
+
+    <script src="assets/javascript/app.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+
+    <script src="assets/javascript/bands.js"></script>
+
+    <script src="assets/javascript/map.js"></script>
+
+    <script src="assets/javascript/songkick.js"></script>
+
+    <!-- Adds in google maps API w/ key -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSZwUGbaFXqLs3MUE0YW1fKFtTqd1Vtps&callback=initMap">
+    </script>
+
+</body>
+
+</html>
