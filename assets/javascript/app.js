@@ -21,22 +21,22 @@ $("#submitEvent").on("click", function (event) {
     var eventLocation = $("#locationInput").val().trim();
     var eventDate = $("#dateInput").val().trim();
     var eventTime = $("#timeInput").val();
-//     let locationType = $(".btn").click(function() {
-//         event.preventDefault();
+    //     let locationType = $(".btn").click(function() {
+    //         event.preventDefault();
 
-//       var fired_button = $(".btn").val();
-  
-//       locationType = fired_button
-//   });
+    //       var fired_button = $(".btn").val();
+
+    //       locationType = fired_button
+    //   });
 
     var newEvent = {
         eventName: eventName,
         bandName: bandName,
-        location: eventLocation,  
+        location: eventLocation,
         eventDate: eventDate,
         eventTime: eventTime,
         // locationType:locationType
-        
+
     }
 
     database.ref("Event").push(newEvent)

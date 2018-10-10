@@ -71,50 +71,50 @@ function displayArtistInfo(artist) {
 function cityId(city) {
   var key = "4s4kGBz0WjJ4Yk6O&min";
   $.ajax({
-      url: "https://api.songkick.com/api/3.0/search/locations.json?query=" + city + "&apikey=" + key,
-      method: "GET"
+    url: "https://api.songkick.com/api/3.0/search/locations.json?query=" + city + "&apikey=" + key,
+    method: "GET"
   }).then(function (response) {
-      var location = response.resultsPage.results.location;
-      console.log(location[0].metroArea);
-      var metro = location[0].metroArea;
-      console.log(metro.id);
-      var id = metro.id;
-      $.ajax({
-          url: "https://api.songkick.com/api/3.0/metro_areas/" + id + "/calendar.json?apikey=" + key + "&min_date=" + date1 + "&max_date=" + date2 + "&per_page=20",
-          method: "GET"
-      }).then(function (response) {
-          for (i = 0; i < response.resultsPage.results.event.length; i++) {
-              var events = response.resultsPage.results.event[i];
-              console.log(events);
-              if (events.type === "Concert") {
-                  console.log("Venue: " + events.venue.displayName);
-                  console.log("Artists: " + events.performance[0].artist.displayName);
-                  console.log("City: " + events.location.city);
-                  console.log("lat: "+events.location.lat);
-                  console.log("lng: "+events.location.lng);
-                  console.log("-------------------");
-                  var sDate = events.start.date;
-                  var place = events.venue.displayName;
-                  var artist = events.performance[0].artist.displayName;
-                  var city = events.location.city;
-                  var vdiv = $("<div>");
-                  var d = $("<p>").text("Date: "+sDate);
-                  var p = $("<p>").text("Venue: "+place);
-                  var a = $("<p>").text("Performers: "+artist);
-                  var c = $("<p>").text("City: "+city);
-                  vdiv.append(p, a, c, d);
-                  $("#artistInfo").append(vdiv);
+    var location = response.resultsPage.results.location;
+    console.log(location[0].metroArea);
+    var metro = location[0].metroArea;
+    console.log(metro.id);
+    var id = metro.id;
+    $.ajax({
+      url: "https://api.songkick.com/api/3.0/metro_areas/" + id + "/calendar.json?apikey=" + key + "&min_date=" + date1 + "&max_date=" + date2 + "&per_page=20",
+      method: "GET"
+    }).then(function (response) {
+      for (i = 0; i < response.resultsPage.results.event.length; i++) {
+        var events = response.resultsPage.results.event[i];
+        console.log(events);
+        if (events.type === "Concert") {
+          console.log("Venue: " + events.venue.displayName);
+          console.log("Artists: " + events.performance[0].artist.displayName);
+          console.log("City: " + events.location.city);
+          console.log("lat: " + events.location.lat);
+          console.log("lng: " + events.location.lng);
+          console.log("-------------------");
+          var sDate = events.start.date;
+          var place = events.venue.displayName;
+          var artist = events.performance[0].artist.displayName;
+          var city = events.location.city;
+          var vdiv = $("<div>");
+          var d = $("<p>").text("Date: " + sDate);
+          var p = $("<p>").text("Venue: " + place);
+          var a = $("<p>").text("Performers: " + artist);
+          var c = $("<p>").text("City: " + city);
+          vdiv.append(p, a, c, d);
+          $("#artistInfo").append(vdiv);
 
-              }
-          }
-      });
+        }
+      }
+    });
 
   });
 }
 
-$(document).keypress(function(ev){
+$(document).keypress(function (ev) {
   if (ev.which === 13)
-     $("#submit").click()
+    $("#submit").click()
 });
 
 $("#submit").click(function () {
@@ -134,7 +134,7 @@ $("#submit").click(function () {
   var endMonth = moment(eMonth).format("YYYY-MM-DD");
   var year = moment().endOf("year");
   var endYear = moment(year).format("YYYY-MM-DD");
-  console.log("End of Year: "+ endYear);
+  console.log("End of Year: " + endYear);
   //console.log("day is: "+newEnd);
   //displayArtistInfo(artist);
   //if 7 days is selected then date varialbe will equal to dange range of 7 days
@@ -175,5 +175,5 @@ $("#submit").click(function () {
     displayArtistInfo(artist);
     //$("#artistPage").hide();
   }
-  
+
 });

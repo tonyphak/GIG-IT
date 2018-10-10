@@ -54,7 +54,7 @@
 
             <input class="form-control mr-sm-4" type="search" placeholder="Search" id="search" aria-label="Search">
             <input class="form-control mr-sm-4" type="search" placeholder="City" id="search2" aria-label="Search">
-            
+
             <div class="row">
 
                 <button type="button" id="submit" class="btn btn-primary">Submit</button>
@@ -68,7 +68,8 @@
             id="artistBtn"><i class="fas fa-plus"></i> Add Event</button>
         <button class="btn btn-outline-dark my-2 my-sm-0 styledBtn" type="button" data-toggle="modal" data-target="#signInModal"
             id="signInBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
-        <button class="btn btn-outline-dark my-2 my-sm-0 styledBtn hide" type="button" id="signOutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+        <button class="btn btn-outline-dark my-2 my-sm-0 styledBtn hide" type="button" id="signOutBtn"><i class="fas fa-sign-out-alt"></i>
+            Sign Out</button>
 
         <!-- Sign In Modal -->
         <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInTitle" aria-hidden="true">
@@ -84,8 +85,10 @@
                         <form>
                             <div class="form-group">
                                 <label for="userEmail">Email address</label>
-                                <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                                    placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
@@ -103,7 +106,8 @@
         </div>
 
         <!-- Event Form Modal -->
-        <div class="modal fade formModal" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalTitle" aria-hidden="true">
+        <div class="modal fade formModal" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalTitle"
+            aria-hidden="true">
 
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 
@@ -170,11 +174,14 @@
                                 <i class="fas fa-beer"></i> Bar</button>
                             <button type="button" class="btn btn-outline-danger" id="houseBtn" data-place="venue" value="house">
                                 <i class="fas fa-home"></i> House</button>
-                            <button type="button" class="btn btn-outline-danger" id="coffeeBtn" data-place="venue" value="coffee">
+                            <button type="button" class="btn btn-outline-danger" id="coffeeBtn" data-place="venue"
+                                value="coffee">
                                 <i class="fas fa-coffee"></i> Coffee Shop</button>
-                            <button type="button" class="btn btn-outline-danger" id="theatreBtn" data-place="venue" value="theatre">
+                            <button type="button" class="btn btn-outline-danger" id="theatreBtn" data-place="venue"
+                                value="theatre">
                                 <i class="fas fa-theater-masks"></i> Theatre</button>
-                            <button type="button" class="btn btn-outline-danger" id="amptheatreBtn" data-place="venue" value="amptheatre">
+                            <button type="button" class="btn btn-outline-danger" id="amptheatreBtn" data-place="venue"
+                                value="amptheatre">
                                 <i class="fas fa-microphone"></i> Amptheatre</button>
                             <button type="button" class="btn btn-outline-danger" id="otherBtn" data-place="venue" value="other">
                                 <i class="fas fa-map-pin"></i> Other</button>
@@ -205,7 +212,7 @@
 
         <div class="leftContainer theme">
 
-            
+
             <h1 class="main-labels">Events</h1>
 
             <form name="dateForm">
